@@ -13,7 +13,7 @@ export default class ReadMoreReact extends React.Component {
 			this.props.text, 
 			this.props.min,
 			this.props.ideal, 
-			this.props.max
+			this.props.max,
 		];
 
 		let textBreakdown = trimText(...args);
@@ -27,6 +27,7 @@ export default class ReadMoreReact extends React.Component {
 
 	render() {
 		let displayText;
+		const { title } = this.props.title;
 		if (!this.state.secondaryText) {
 			displayText = (
 			<div className="display-text-group">
@@ -48,7 +49,7 @@ export default class ReadMoreReact extends React.Component {
 				<span className="displayed-text">
 						{`${this.state.primaryText}`}
 				<div className="read-more-button"
-						 onClick={this.setStatus.bind(this)}>read more</div>
+						 onClick={this.setStatus.bind(this)}>{title}</div>
 				</span>
 			</div>);
 		}
@@ -61,5 +62,5 @@ ReadMoreReact.propTypes = {
   text: PropTypes.string.isRequired,
   min: PropTypes.number,
   ideal: PropTypes.number,
-  max: PropTypes.number
+  max: PropTypes.number,
 };
